@@ -1,0 +1,105 @@
+/* ==========================================================================
+   BOOK DETAIL PAGE STYLES
+   ========================================================================== */
+
+.book-detail-page {
+    min-height: 100vh;
+    background: transparent;
+}
+
+.detail-card-modern {
+    background: rgba(18, 22, 31, 0.82);
+    backdrop-filter: blur(16px);
+    -webkit-backdrop-filter: blur(16px);
+    border: 1px solid rgba(255, 255, 255, 0.08);
+    box-shadow: 0 20px 45px rgba(0, 0, 0, 0.5);
+}
+
+.main-book-image-box {
+    background: #090b10;
+    border: 1px solid rgba(255, 255, 255, 0.08);
+    height: 440px;
+    padding: 1.5rem;
+    overflow: hidden;
+}
+
+.book-hero-image {
+    max-height: 100%;
+    max-width: 100%;
+    object-fit: contain;
+    filter: drop-shadow(0 12px 24px rgba(0, 0, 0, 0.65));
+    transition: transform 0.3s ease;
+}
+
+.detail-fav-btn {
+    position: absolute;
+    top: 1rem;
+    right: 1rem;
+    width: 44px;
+    height: 44px;
+    border-radius: 50%;
+    background: rgba(14, 18, 26, 0.75);
+    backdrop-filter: blur(8px);
+    border: 1px solid rgba(255, 255, 255, 0.15);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    transition: all 0.25s ease;
+}
+
+.detail-fav-btn:hover {
+    background: rgba(255, 255, 255, 0.2);
+    transform: scale(1.1);
+}
+
+.detail-fav-btn.active {
+    background: rgba(255, 51, 75, 0.2);
+    border-color: rgba(255, 51, 75, 0.5);
+}
+
+/* Thumbnail Gallery */
+.thumbnail-btn {
+    width: 70px;
+    height: 70px;
+    border-radius: 10px;
+    background: #090b10;
+    border: 2px solid rgba(255, 255, 255, 0.1);
+    padding: 3px;
+    cursor: pointer;
+    overflow: hidden;
+    transition: all 0.2s ease;
+}
+
+.thumbnail-btn:hover {
+    border-color: rgba(255, 193, 7, 0.5);
+}
+
+.thumbnail-active {
+    border-color: #ffc107 !important;
+    box-shadow: 0 0 10px rgba(255, 193, 7, 0.4);
+}
+
+.thumbnail-img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    border-radius: 6px;
+}
+
+/* Price Box */
+.price-box-modern {
+    background: rgba(255, 255, 255, 0.04);
+    border: 1px solid rgba(255, 255, 255, 0.08);
+}
+
+.notes-box {
+    background: rgba(255, 193, 7, 0.08);
+    border: 1px solid rgba(255, 193, 7, 0.2);
+}
+
+@media (max-width: 768px) {
+    .main-book-image-box {
+        height: 320px;
+    }
+}

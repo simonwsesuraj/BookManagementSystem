@@ -1,0 +1,115 @@
+/* ==========================================================================
+   MODERN BOOK CARD STYLES
+   ========================================================================== */
+
+.book-card-modern {
+    background: rgba(18, 22, 31, 0.82) !important;
+    border: 1px solid rgba(255, 255, 255, 0.08) !important;
+    border-radius: 1.25rem !important;
+    transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+    box-shadow: 0 8px 24px rgba(0, 0, 0, 0.35);
+}
+
+.book-card-modern:hover {
+    transform: translateY(-6px);
+    border-color: rgba(255, 193, 7, 0.35) !important;
+    box-shadow: 0 16px 36px rgba(0, 0, 0, 0.5), 0 0 20px rgba(255, 193, 7, 0.08);
+}
+
+/* Status Pill Overlay */
+.status-pill-overlay {
+    background: rgba(14, 18, 26, 0.85);
+    backdrop-filter: blur(8px);
+    border: 1px solid rgba(255, 255, 255, 0.12);
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.4);
+}
+
+.status-indicator-text {
+    font-size: 0.72rem;
+    font-weight: 700;
+    color: #e2e8f0;
+    letter-spacing: 0.02em;
+}
+
+/* Favorite Button */
+.modern-favorite-btn {
+    width: 38px;
+    height: 38px;
+    border: 1px solid rgba(255, 255, 255, 0.15);
+    border-radius: 50%;
+    background: rgba(14, 18, 26, 0.75);
+    backdrop-filter: blur(8px);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    transition: all 0.25s ease;
+}
+
+.modern-favorite-btn:hover {
+    background: rgba(255, 255, 255, 0.2);
+    transform: scale(1.12);
+}
+
+.modern-favorite-btn.favorite-active {
+    background: rgba(255, 51, 75, 0.2);
+    border-color: rgba(255, 51, 75, 0.5);
+}
+
+/* Image Carousel Wrapper in Card */
+.book-card-carousel-wrapper {
+    background: #090b10;
+    border-top-left-radius: 1.25rem;
+    border-top-right-radius: 1.25rem;
+    overflow: hidden;
+}
+
+.book-card-carousel-wrapper .book-image-container {
+    background: transparent;
+    height: 260px;
+}
+
+.book-card-carousel-wrapper .book-image-wrapper {
+    height: 260px;
+    padding: 12px;
+}
+
+.book-card-carousel-wrapper .book-image {
+    height: 236px;
+    object-fit: contain;
+    filter: drop-shadow(0 8px 16px rgba(0,0,0,0.6));
+    transition: transform 0.35s ease;
+}
+
+.book-card-modern:hover .book-image {
+    transform: scale(1.04);
+}
+
+/* Description Clamp */
+.book-description {
+    display: -webkit-box;
+    -webkit-line-clamp: 2;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+    line-height: 1.6;
+    min-height: 2.8em;
+}
+
+/* Details Button */
+.btn-details-modern {
+    background: linear-gradient(135deg, #252b38 0%, #1a1e28 100%);
+    border: 1px solid rgba(255, 255, 255, 0.12);
+    color: #f1f5f9;
+    font-size: 0.88rem;
+    font-weight: 600;
+    padding: 9px 18px;
+    transition: all 0.25s ease;
+}
+
+.btn-details-modern:hover {
+    background: #ffc107;
+    border-color: #ffc107;
+    color: #0f131a;
+    transform: translateY(-1px);
+    box-shadow: 0 4px 14px rgba(255, 193, 7, 0.3);
+}
