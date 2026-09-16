@@ -26,6 +26,7 @@ frontend/build/
 # Environment files
 .env
 .env.*
+.env.production
 
 # OS/editor files
 .DS_Store
