@@ -12,7 +12,7 @@ const userLogout = () =>{
 
     const refresh_token = localStorage.getItem("refresh_token");
 
-    console.log("Refresh Token:", refresh_token);
+    // console.log("Refresh Token:", refresh_token);
 
     try {
         if (refresh_token) {
@@ -31,8 +31,8 @@ const userLogout = () =>{
     }
 
     catch (err) {
-        console.log("Logout Status:", err.response?.status);
-        console.log("Logout Response:", err.response?.data);
+        // console.log("Logout Status:", err.response?.status);
+        // console.log("Logout Response:", err.response?.data);
 
         const message =
             err.response?.data?.message ||
