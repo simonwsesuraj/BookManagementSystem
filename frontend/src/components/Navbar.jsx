@@ -17,6 +17,42 @@ export default function Navbar() {
     const [searchQuery, setSearchQuery] = useState(searchParams.get("search") || "");
     const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
     const [isFilterModalOpen, setIsFilterModalOpen] = useState(false);
+    const [searchSuggestions, setSearchSuggestions] = useState([]);
+    const [showSuggestions, setShowSuggestions] = useState(false);
+    const [suggestionLoading, setSuggestionLoading] = useState(false);
+
+    useEffect(() => {
+        const query = searchQuery.trim();
+
+        if (!query) {
+            setSearchSuggestions([]);
+            setShowSuggestions(false);
+            return;
+        }
+
+        const timer = setTimeout(async () => {
+            try {
+                setSuggestionLoading(true);
+
+                const response = await fetch(
+                    `http://127.0.0.1:8000/api/books/?search=${encodeURIComponent(query)}`
+                );
+
+                const result = await response.json();
+
+                setSearchSuggestions(result.data?.slice(0, 5) || []);
+                setShowSuggestions(true);
+
+            } catch (error) {
+                console.error("Suggestion error:", error);
+                setSearchSuggestions([]);
+            } finally {
+                setSuggestionLoading(false);
+            }
+        }, 300);
+
+        return () => clearTimeout(timer);
+    }, [searchQuery]);
 
     // Sync input with URL search param
     useEffect(() => {
@@ -160,15 +196,25 @@ export default function Navbar() {
                                     )}
                                 </button>
 
-                                <div className="search-input-wrapper flex-grow-1">
+                                <div className="search-input-wrapper flex-grow-1 position-relative">
+
                                     <input
                                         className="search-input-modern"
                                         type="search"
                                         value={searchQuery}
-                                        onChange={(e) => setSearchQuery(e.target.value)}
+                                        onChange={(e) => {
+                                            setSearchQuery(e.target.value);
+                                            setShowSuggestions(true);
+                                        }}
+                                        onFocus={() => {
+                                            if (searchQuery.trim()) {
+                                                setShowSuggestions(true);
+                                            }
+                                        }}
                                         placeholder="புத்தகம் அல்லது ஆசிரியர் பெயர் தேடுக..."
                                         aria-label="தேடு"
                                     />
+
                                     {searchQuery && (
                                         <button
                                             type="button"
@@ -178,6 +224,43 @@ export default function Navbar() {
                                         >
                                             <FaTimes size={13} />
                                         </button>
+                                    )}
+
+                                    {/* Suggestions */}
+                                    {showSuggestions && searchSuggestions.length > 0 && (
+                                        <div className="search-suggestions">
+
+                                            {searchSuggestions.map((book) => (
+                                                <button
+                                                    key={book.id}
+                                                    type="button"
+                                                    className="search-suggestion-item"
+                                                    onClick={() => {
+                                                        setSearchQuery(book.title);
+                                                        setShowSuggestions(false);
+
+                                                        navigate(
+                                                            `/books?search=${encodeURIComponent(book.title)}`
+                                                        );
+                                                    }}
+                                                >
+                                                    <FaBook size={14} />
+
+                                                    <div className="suggestion-content">
+                                                        <div className="suggestion-title">
+                                                            {book.title}
+                                                        </div>
+
+                                                        {book.author && (
+                                                            <small>
+                                                                {book.author}
+                                                            </small>
+                                                        )}
+                                                    </div>
+                                                </button>
+                                            ))}
+
+                                        </div>
                                     )}
                                 </div>
 
