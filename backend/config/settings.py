@@ -171,9 +171,9 @@ STATIC_ROOT = BASE_DIR / "staticfiles"
 
 CORS_ALLOWED_ORIGINS =[
     "http://localhost:5173",
-    "https://book-management-system-zeta-nine.vercel.app"
+    "https://book-management-system-simon.vercel.app"
 ]
 
 CSRF_TRUSTED_ORIGINS = [
-    "https://book-management-system-zeta-nine.vercel.app",
+    "https://book-management-system-simon.vercel.app"
 ]
