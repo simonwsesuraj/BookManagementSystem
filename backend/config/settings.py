@@ -36,7 +36,8 @@ SECRET_KEY = os.environ.get(
 DEBUG = os.environ.get("DEBUG", "True") == "True"
 
 ALLOWED_HOSTS =[
-    "localhost:5173",
+    "localhost",
+    '127.0.0.1',
     "bookmanagementsystem-ee0c.onrender.com"
 ]
 
