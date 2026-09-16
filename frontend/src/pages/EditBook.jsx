@@ -129,6 +129,16 @@ function EditBook() {
         setNewImages(files);
     };
 
+    const handleCameraChange = (e) => {
+        const file = e.target.files?.[0];
+
+        if (file) {
+            setNewImages(prev => [...prev, file]);
+        }
+
+        e.target.value = "";
+    };
+
     const handleDeleteImage = async (imageId) => {
         if (!window.confirm("இந்த படத்தை நீக்க விரும்புகிறீர்களா?")) return;
 
@@ -578,19 +588,54 @@ function EditBook() {
 
                             {/* Add New Images */}
                             <div className="mb-4">
-                                <label className="form-label-modern mb-2" htmlFor="new-images">
-                                    புதிய புகைப்படங்கள் சேர்க்க (Add New Photos)
+                                <label className="form-label-modern mb-3">
+                                    புதிய புகைப்படங்கள் சேர்க்க
                                 </label>
-                                <input
-                                    type="file"
-                                    id="new-images"
-                                    className="form-control-modern"
-                                    multiple
-                                    accept="image/*"
-                                    onChange={handleImageChange}
-                                />
+
+                                <div className="d-flex gap-3 flex-wrap">
+
+                                    {/* Upload Photo */}
+                                    <label
+                                        htmlFor="gallery-images"
+                                        className="photo-action-btn"
+                                    >
+                                        <FaUpload size={18} />
+                                        <span>புகைப்படம் தேர்வு செய்</span>
+                                        <small>Gallery / Files</small>
+                                    </label>
+
+                                    <input
+                                        type="file"
+                                        id="gallery-images"
+                                        className="d-none"
+                                        multiple
+                                        accept="image/*"
+                                        onChange={handleImageChange}
+                                    />
+
+                                    {/* Take Picture */}
+                                    <label
+                                        htmlFor="camera-image"
+                                        className="photo-action-btn"
+                                    >
+                                        <span style={{ fontSize: "20px" }}>📷</span>
+                                        <span>புகைப்படம் எடு</span>
+                                        <small>Camera</small>
+                                    </label>
+
+                                    <input
+                                        type="file"
+                                        id="camera-image"
+                                        className="d-none"
+                                        accept="image/*"
+                                        capture="environment"
+                                        onChange={handleCameraChange}
+                                    />
+
+                                </div>
+
                                 {newImages.length > 0 && (
-                                    <small className="text-warning mt-1 d-block">
+                                    <small className="text-warning mt-3 d-block">
                                         {newImages.length} புதிய படங்கள் தேர்ந்தெடுக்கப்பட்டுள்ளன.
                                     </small>
                                 )}
