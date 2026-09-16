@@ -37,7 +37,7 @@ DEBUG = os.environ.get("DEBUG", "True") == "True"
 
 ALLOWED_HOSTS =[
     "localhost:5173",
-    "book-management-system-zeta-nine.vercel.app"
+    "bookmanagementsystem-ee0c.onrender.com"
 ]
 
 
@@ -174,3 +174,6 @@ CORS_ALLOWED_ORIGINS =[
     "https://book-management-system-zeta-nine.vercel.app"
 ]
 
+CSRF_TRUSTED_ORIGINS = [
+    "https://book-management-system-zeta-nine.vercel.app",
+]
